@@ -21,19 +21,39 @@ from abc import abc     # abstract classes
 # CLASSES #
 ###########
 
-# World class for methods involving rendering world states
+# Abstract world class for methods involving rendering world states
 class World(abc):
     
     pass
 
 
-# Class for displaying and choosing all the different stations of a line
-class Line(World):
+# Class for the world state of gathering the T data for a station
+class Station(World):
+    
+    # Constructor method
+    def __init__(self, station)
+        
+        self.station = station 
+
+
+# Class for choosing all the different stations of a line
+class Stations(World):
     
     # Constructor method
     def __init__(self, stations):
         
         self.stations = stations
+
+
+# Class for choosing between the different lines
+class Lines(World):
+    
+    # Constructor method
+    def __init__(self, lines):
+
+        self.lines = lines
+
+
 
 
 ####################
