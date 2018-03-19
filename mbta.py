@@ -14,6 +14,7 @@
 
 import sys                              # system class
 from abc import ABC, abstractmethod     # abstract classes
+# import keyboard                         # Keyboard inputs
 
 
 ####################
@@ -38,6 +39,7 @@ from abc import ABC, abstractmethod     # abstract classes
 # Abstract world class for methods involving rendering world states
 class World(ABC):
 
+    # Dummy rendering function
     def render_world(self):
         
         print(self.selection())
@@ -186,7 +188,35 @@ class World(ABC):
     # Gets the current event for the event handler
     def get_current_event():
         
-        return None
+        """""
+        if keyboard.is_pressed('w'):
+            
+            return 'up'
+        
+        elif keyboard.is_pressed('a'):
+
+            return 'left'
+             
+        elif keyboard.is_pressed('s'):
+
+            return 'down'
+
+        elif keyboard.is_pressed('d'):
+
+            return 'right'
+
+        elif keyboard.is_pressed('q'):
+
+            return 'quit'
+        
+        else:
+
+            pass
+
+        """""
+
+        pass
+
 
 
 ####################
