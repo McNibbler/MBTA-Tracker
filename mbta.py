@@ -101,7 +101,7 @@ class World(ABC):
            self.down_handler() 
 
         elif event == 'left':
-            pass
+           self.left_handler()
 
         elif event == 'right':
             pass
@@ -112,79 +112,72 @@ class World(ABC):
         else:
             pass
 
-    
-    # Changes the world state based on when "up" is selected
+
+    # Handler for up event
     def up_handler(self):
-        
-        if type(self) is Lines:
 
-            current_index = self.lines.index(self.current_selected)
+        if self is Lines:
 
-            if current_index == 0:
-                pass
+            self = self.Lines.up_handler(self)
 
-            else:
-                self.current_selected = self.lines(current_index - 1)
+        elif self is Stations:
 
-
-        if type(self) is Stations:
-
-            current_index = self.stations.index(self.current_selected)
-
-            if current_index == 0:
-                pass
-
-            else:
-                self.current_selected = self.stations(current_index - 1) 
+            self = self.Stations.up_handler(self)
 
         else:
+
             pass
 
 
-    # Changes the world state based on when "down" is selected
+    # Handler for down event
     def down_handler(self):
-        
-        if type(self) is Lines:
 
-            current_index = self.lines.index(self.current_selected)
+        if self is Lines:
 
-            if current_index == len(self.lines - 1):
-                pass
+            self = self.Lines.down_handler(self)
 
-            else:
-                self.current_selected = self.lines(current_index + 1)
+        elif self is Stations:
 
-
-        if type(self) is Stations:
-
-            current_index = self.stations.index(self.current_selected)
-
-            if current_index == len(self.lines - 1):
-                pass
-
-            else:
-                self.current_selected = self.stations(current_index + 1) 
+            self = self.Stations.down_handler(self)
 
         else:
+
             pass
 
 
-    # Changes back to the previous world state when left is selected    
+    # Handler for left event
     def left_handler(self):
 
-        if type(self) is Stations:
+        if self is Station:
 
-            self = self.came_from_lines
+            self = self.Station.left_handler(self)
 
-        if type(self) is Station:
+        elif self is Stations:
 
-            self = self.came_from_stations
+            self = self.Stations.left_handler(self)
 
         else:
- 
+
             pass
 
-    
+
+    # Handler for right event
+    def right_handler(self):
+
+        if self is Lines:
+
+            self = self.Lines.right_handler(self)
+
+        elif self is Stations:
+
+            self = self.Stations.right_handler(self)
+
+        else:
+
+            pass
+
+
+
     # Gets the current event for the event handler
     def get_current_event():
         
@@ -235,6 +228,30 @@ class Station(World):
         self.came_from_stations = came_from_stations
 
 
+    # Event handler for up
+    def up_handler(self):
+
+        return self
+
+    
+    # Event handler for down
+    def down_handler(self):
+
+        return self
+
+
+    # Event handler for left
+    def left_handler(self):
+
+        return came_from_stations
+
+
+    # Event handler for right
+    def right_handler(self):
+
+        return self
+
+
 # Class for choosing all the different stations of a line
 class Stations(World):
     
@@ -245,6 +262,49 @@ class Stations(World):
         self.current_selected = current_selected
         self.came_from_lines = came_from_lines
 
+    
+    # Event handler for up
+    def up_handler(self):    
+
+        current_index = self.stations.index(self.current_selected)
+
+        if current_index == 0:
+
+            return self 
+
+        else:
+
+            self.current_selected = self.stations(current_index - 1) 
+            
+            return self
+
+
+    # Event handler for down
+    def down_handler(self):
+
+        current_index = self.stations.index(self.current_selected)
+
+        if current_index == len(self.stations - 1):
+
+            return self
+
+        else:
+            self.current_selected = self.stations(current_index + 1) 
+            
+            return self
+    
+
+    # Event handler for left
+    def left_handler(self):
+
+        return self.came_from_lines        
+
+
+    # Event handler for right
+    def right_handler(self):
+
+        return self
+
 
 # Class for choosing between the different lines
 class Lines(World):
@@ -254,6 +314,49 @@ class Lines(World):
 
         self.lines = lines
         self.current_selected = current_selected
+
+    
+    # Event handler for up
+    def up_handler(self):    
+
+        current_index = self.lines.index(self.current_selected)
+
+        if current_index == 0:
+
+            return self
+
+        else:
+
+            self.current_selected = self.lines(current_index - 1) 
+            
+            return self
+
+
+    # Event handler for down
+    def down_handler(self):
+
+        current_index = self.lines.index(self.current_selected)
+
+        if current_index == len(self.lines- 1):
+
+            return self 
+
+        else:
+            self.current_selected = self.lines(current_index + 1) 
+            
+            return self
+    
+
+    # Event handler for left
+    def left_handler(self):
+
+        return self
+     
+
+    # Event handler for right
+    def right_handler(self):
+
+        return self
 
 
 ####################
