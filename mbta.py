@@ -368,6 +368,12 @@ class Lines(World):
 # main method weow!!
 def main():
     
+    # grabs my api key for MBTA API v3
+    with open('api-key.txt', 'r') as file:
+
+        api_key = file.read()
+    
+
     # Initializing a "Big Bang" type structure
     running = True 
     
