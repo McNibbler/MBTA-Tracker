@@ -254,13 +254,138 @@ class Station(World):
 
 # Class for choosing all the different stations of a line
 class Stations(World):
-    
+
+
     # Constructor method
     def __init__(self, stations, current_selected, came_from_lines):
         
         self.stations = stations
         self.current_selected = current_selected
         self.came_from_lines = came_from_lines
+
+        self.blue_line = ['Wonderland',
+                        'Revere Beach',
+                        'Beachmont',
+                        'Suffolk Downs',
+                        'Orient Heights',
+                        'Wood Island',
+                        'Airport',
+                        'Maverick',
+                        'Aquarium',
+                        'State Street',
+                        'Government Center',
+                        'Bowdoin']
+        self.green_line = ['Lechmere',
+                        'Science Park',
+                        'North Station',
+                        'Haymarket',
+                        'Government Center',
+                        'Park Street',
+                        'Boyleston',
+                        'Arlington',
+                        'Copley',
+                        'Hynes',
+                        'Kenmore',
+                        'E:Prudential',
+                        'E:Symphony',
+                        'E:Northeastern',
+                        'E:MFA',
+                        'E:Longwood Medical',
+                        'E:Brigham Circle',
+                        'E:Fenwood Road',
+                        'E:Mission Park',
+                        'E:Riverway',
+                        'E:Back of the Hill',
+                        'E:Heath Street',
+                        'D:Fenway',
+                        'D:Longwood',
+                        'D:Brookline Village',
+                        'D:Brookline Hills',
+                        'D:Beaconsfield',
+                        'D:Reservoir',
+                        'D:Chestnut Hill',
+                        'D:Newton Center',
+                        'D:Newton Highlands',
+                        'D:Eliot',
+                        'D:Waban',
+                        'D:Woodland',
+                        'D:Riverside',
+                        'C:St Marys Street',
+                        'C:Hawese Street',
+                        'C:Kent Street',
+                        'C:St Paul Street',
+                        'C:Coolidge Corner',
+                        'C:Summit Ave',
+                        'C:Brandon Hall',
+                        'C:Fairbanks St',
+                        'C:Washington Sq',
+                        'C:Tappan Street',
+                        'C:Dean Road',
+                        'C:Englewood Ave',
+                        'C:Cleveland Circ',
+                        'B:Blandford St',
+                        'B:Boston Uni E',
+                        'B:Boston Uni Cent',
+                        'B:Boston Uni W',
+                        'B:St Paul Street',
+                        'B:Pleasant Street',
+                        'B:Babcock Street',
+                        'B:Packards Corner',
+                        'B:Harvard Ave',
+                        'B:Griggs Street',
+                        'B:Allston Street',
+                        'B:Warren Street',
+                        'B:Washington St',
+                        'B:Sutherland Road',
+                        'B:Chiswick Road',
+                        'B:Chestnut Hill',
+                        'B:South Street',
+                        'B:Boston College']
+
+        self.orange_line = ['Oak Grove',
+                        'Malden Center',
+                        'Wellington',
+                        'Assembly',
+                        'Sullivan Square',
+                        'Community College',
+                        'North Station',
+                        'Haymarket',
+                        'State Street',
+                        'Downtown Crossing',
+                        'Chinatown',
+                        'Tufts Medical',
+                        'Back Bay',
+                        'Mass Ave',
+                        'Ruggles',
+                        'Roxbury Crossing',
+                        'Jackson Square',
+                        'Stony Brook',
+                        'Green Street',
+                        'Forest Hills']
+
+        self.red_line = ['Alewife',
+                        'Davis',
+                        'Porter',
+                        'Harvard',
+                        'Central',
+                        'Kendall/MIT',
+                        'Charles/MGH',
+                        'Park Street',
+                        'Downtown Crossing',
+                        'South Station',
+                        'Broadway',
+                        'Andrew',
+                        'JFK/U Mass',
+                        'A:Savin Hill',
+                        'A:Fields Corner',
+                        'A:Shawmut',
+                        'A:Ashmont',
+                        'B:North Quincy',
+                        'B:Wollaston',
+                        'B:Quincy Center',
+                        'B:Quincy Adams',
+                        'B:Braintree']
+
 
     
     # Event handler for up
@@ -381,8 +506,7 @@ def main():
     line_list = ['Blue Line',
             'Green Line',
             'Orange Line',
-            'Red Line',
-            'Silver Line']
+            'Red Line']
 
     current_selected = 'Blue Line'
 
