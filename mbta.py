@@ -14,7 +14,7 @@
 
 import sys                              # system class
 from abc import ABC, abstractmethod     # abstract classes
-# import keyboard                         # Keyboard inputs
+import RPi.GPIO as GPIO                 # Keyboard inputs
 
 
 ####################
@@ -180,8 +180,9 @@ class World(ABC):
 
     # Gets the current event for the event handler
     def get_current_event():
-        
-        """""
+
+        '''
+
         if keyboard.is_pressed('w'):
             
             return 'up'
@@ -206,10 +207,9 @@ class World(ABC):
 
             pass
 
-        """""
+        '''
 
-        pass
-
+        pass        
 
 
 ####################
